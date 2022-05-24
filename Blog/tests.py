@@ -1,9 +1,20 @@
 from django.test import TestCase, Client
 
-class HomePageTestCase(TestCase):
+class UrlTestCase(TestCase):
 
-    def test_open_home_page(self):
-        client = Client()
-        response = client.get('')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.content, b'Hi')
+    def setUp(self):
+        self.client = Client()
+        self.url_list = [
+            '',
+            '/przepisy'
+        ]
+
+    def test_200_status_for_get_requests(self):
+        for url in self.url_list:
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 200)
+
+    # def test_template_name(self):
+    #     for url in self.url_list:
+    #         response = self.client.get(url)
+    #         self.assertEqual(response.templates, 200)
