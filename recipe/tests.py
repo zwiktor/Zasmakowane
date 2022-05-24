@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from recipe.models import Recipe, Cuisine, Tag, Category
+from recipe.models import Recipe, Cuisine, Tag, Category, Ingredient, Step
 
 
 class UrlTestCase(TestCase):
@@ -48,3 +48,22 @@ class CategoryModelTestCase(TestCase):
         self.assertIsInstance(cat, Category)
         self.assertEqual(cat.name, 'Obiad')
         self.assertEqual(str(cat), 'Obiad')
+
+class IngredientModelTestCase(TestCase):
+
+    def test_ingredients_model(self):
+        ing = Ingredient(name='Mleko', measure='GR', quantity=100)
+        self.assertIsInstance(ing, Ingredient)
+        self.assertEqual(ing.name, 'Mleko')
+        self.assertEqual(ing.measure, 'GR')
+        self.assertEqual(ing.quantity, 100)
+        self.assertEqual(str(ing), 'Mleko 100 GR')
+
+class StepModelTestCase(TestCase):
+
+    def test_setp_model(self):
+        step = Step(number=1, description='lorem ipsum lorem ipsum')
+        self.assertIsInstance(step, Step)
+        self.assertEqual(step.number, 1)
+        self.assertEqual(step.description, 'lorem ipsum lorem ipsum')
+        self.assertEqual(str(step), str(1)+' Krok')
