@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from recipe.models import Recipe
+from recipe.models import Recipe, Cuisine
 
 
 class UrlTestCase(TestCase):
@@ -23,3 +23,15 @@ class RecipeModelTestCase(TestCase):
         recipe = Recipe()
         self.assertEqual(recipe.title, 'Przepis')
         self.assertEqual(recipe.description, 'krotki opis')
+
+
+class CuisineModelTestCase(TestCase):
+
+    def test_cuisine_model(self):
+        cuisine = Cuisine(name='Włoska')
+        self.assertIsInstance(cuisine, Cuisine)
+        self.assertEqual(cuisine.name, 'Włoska')
+        self.assertEqual(str(cuisine), 'Włoska')
+
+
+
