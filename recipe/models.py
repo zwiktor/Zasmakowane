@@ -43,4 +43,5 @@ class Step(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=256, default='Przepis')
     description = models.TextField(default='krotki opis')
-
+    cuisines = models.ManyToManyField(Cuisine)
+    tags = models.ManyToManyField(Tag)

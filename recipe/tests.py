@@ -27,19 +27,63 @@ class RecipeModelTestCase(TestCase):
 
 class CuisineModelTestCase(TestCase):
 
+    def setUp(self):
+        self.recipe = Recipe(title='Tytul Przepisu', description='krotki opis przepisu')
+        self.cuisine = Cuisine(name='Wloska')
+        self.cuisine2 = Cuisine(name='Fusion')
+        self.recipe.save()
+        self.cuisine.save()
+        self.cuisine2.save()
+
     def test_cuisine_model(self):
-        cuisine = Cuisine(name='Włoska')
+        cuisine = Cuisine.objects.get(id=1)
         self.assertIsInstance(cuisine, Cuisine)
-        self.assertEqual(cuisine.name, 'Włoska')
-        self.assertEqual(str(cuisine), 'Włoska')
+        self.assertEqual(cuisine.name, 'Wloska')
+        self.assertEqual(str(cuisine), 'Wloska')
+
+    def test_relation_with_recipie(self):
+        cuisine = Cuisine.objects.get(id=1)
+        cuisine2 = Cuisine.objects.get(id=2)
+        recipe = Recipe.objects.get(id=1)
+        recipe.cuisines.add(cuisine, cuisine2)
+        recipe.save()
+        self.assertIsInstance(recipe, Recipe)
+        self.assertEqual(len(recipe.cuisines.all()), 2)
+        self.assertEqual(recipe.cuisines.get(id=1).name, 'Wloska')
+        self.assertEqual(Recipe.objects.get(cuisines__name='Fusion').title, 'Tytul Przepisu')
+        self.assertEqual(len(Cuisine.objects.filter(recipe__title='Tytul Przepisu')), 2)
+
 
 class TagModelTestCase(TestCase):
 
-    def test_tag_model(self):
+    def setUp(self):
         tag = Tag(name='Vege')
+        tag1 = Tag(name='Fast')
+        recipe = Recipe(title='Przepis1')
+        recipe1 = Recipe(title='Przepis2')
+        tag.save()
+        tag1.save()
+        recipe.save()
+        recipe1.save()
+
+    def test_tag_model(self):
+        tag = Tag.objects.get(name='Vege')
         self.assertIsInstance(tag, Tag)
         self.assertEqual(tag.name, 'Vege')
         self.assertEqual(str(tag), 'Vege')
+
+    def test_relation_with_recipe(self):
+        recipe = Recipe.objects.get(id=1)
+        recipe1 = Recipe.objects.get(title='Przepis2')
+        tag = Tag.objects.get(id=1)
+        tags = Tag.objects.all()
+        recipe.tags.add(tag)
+        for t in tags:
+            recipe1.tags.add(t)
+        self.assertEqual(recipe.tags.filter(name='Vege').get().id, 1)
+        self.assertEqual(len(Recipe.objects.all()), 2)
+#       sprwdzic czy recipe1 posiada 2 tagi
+        self.assertEqual(len(Recipe.objects.get(id=2).tags.all()), 2)
 
 class CategoryModelTestCase(TestCase):
 
