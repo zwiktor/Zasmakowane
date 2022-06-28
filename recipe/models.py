@@ -45,3 +45,4 @@ class Recipe(models.Model):
     description = models.TextField(default='krotki opis')
     cuisines = models.ManyToManyField(Cuisine)
     tags = models.ManyToManyField(Tag)
+    categories = models.ManyToManyField(Category)

@@ -87,11 +87,33 @@ class TagModelTestCase(TestCase):
 
 class CategoryModelTestCase(TestCase):
 
+    def setUp(self):
+        cat = Category(name='Obiad')
+        cat1 = Category(name='Kolacja')
+        recipe = Recipe(title='Przepis1')
+        recipe1 = Recipe(title='Przepis2')
+        cat.save()
+        cat1.save()
+        recipe.save()
+        recipe1.save()
+
     def test_category_model(self):
         cat = Category(name='Obiad')
         self.assertIsInstance(cat, Category)
         self.assertEqual(cat.name, 'Obiad')
         self.assertEqual(str(cat), 'Obiad')
+
+    def test_relation_with_recipe(self):
+        recipe = Recipe.objects.get(id=1)
+        recipe1 = Recipe.objects.get(title='Przepis2')
+        cat = Category.objects.get(id=1)
+        cats = Category.objects.all()
+        recipe.categories.add(cat)
+        for c in cats:
+            recipe1.categories.add(c)
+        self.assertEqual(Recipe.objects.filter(categories__name=cat.name).first().title, 'Przepis1')
+        self.assertEqual(len(Category.objects.all()), 2)
+
 
 class IngredientModelTestCase(TestCase):
 
