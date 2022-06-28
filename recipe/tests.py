@@ -117,6 +117,14 @@ class CategoryModelTestCase(TestCase):
 
 class IngredientModelTestCase(TestCase):
 
+    def setUp(self):
+        recipe = Recipe(title='przepis', description='opis przykładowego przepisu')
+        recipe.save()
+        milk = Ingredient(name='Mleko', measure='ML', quantity=300, recipe=recipe)
+        nuddles = Ingredient(name='Makaron', measure='GR', quantity=100, recipe=recipe)
+        milk.save()
+        nuddles.save()
+
     def test_ingredients_model(self):
         ing = Ingredient(name='Mleko', measure='GR', quantity=100)
         self.assertIsInstance(ing, Ingredient)
@@ -125,9 +133,23 @@ class IngredientModelTestCase(TestCase):
         self.assertEqual(ing.quantity, 100)
         self.assertEqual(str(ing), 'Mleko 100 GR')
 
+    def test_relation_with_recipe(self):
+        # relation OneToMany
+        recipe = Recipe.objects.get(id=1)
+        # znajdz wszystkie składniki dla wybranego pzepisu
+        recipe_ing = Ingredient.objects.filter(recipe=recipe)
+        recipe_ing2 = Ingredient.objects.filter(recipe__title='przepis')
+        recipe_ing3 = Recipe.objects.get(ingredient__name='Mleko').title
+        self.assertEqual(list(recipe_ing), list(recipe_ing2))
+        self.assertEqual(recipe_ing3, 'przepis')
+        # usunięcie składniku i sprawdzenie długości skladników
+        recipe_ing2.first().delete()
+        recipe_ing2 = Ingredient.objects.filter(recipe__title='przepis')
+        self.assertEqual(len(recipe_ing2), 1)
+
 class StepModelTestCase(TestCase):
 
-    def test_setp_model(self):
+    def test_step_model(self):
         step = Step(number=1, description='lorem ipsum lorem ipsum')
         self.assertIsInstance(step, Step)
         self.assertEqual(step.number, 1)

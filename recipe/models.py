@@ -20,6 +20,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Recipe(models.Model):
+    title = models.CharField(max_length=256, default='Przepis')
+    description = models.TextField(default='krotki opis')
+    cuisines = models.ManyToManyField(Cuisine)
+    tags = models.ManyToManyField(Tag)
+    categories = models.ManyToManyField(Category)
+
 class Ingredient(models.Model):
     measurment = [
         ('GR', 'Gramy'),
@@ -28,6 +35,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=128, default='Produkt')
     measure = models.CharField(max_length=2, choices=measurment, default='GR')
     quantity = models.IntegerField(default=1)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
         return ' '.join([self.name, str(self.quantity), self.measure])
@@ -40,9 +48,3 @@ class Step(models.Model):
     def __str__(self):
         return str(self.number) + ' Krok'
 
-class Recipe(models.Model):
-    title = models.CharField(max_length=256, default='Przepis')
-    description = models.TextField(default='krotki opis')
-    cuisines = models.ManyToManyField(Cuisine)
-    tags = models.ManyToManyField(Tag)
-    categories = models.ManyToManyField(Category)
