@@ -44,7 +44,19 @@ class Ingredient(models.Model):
 class Step(models.Model):
     number = models.IntegerField(default=1)
     description = models.CharField(max_length=1024, default='Opis kroku')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.number) + ' Krok'
 
+    def save(self, *args, **kwargs):
+        steps = Step.objects.filter(recipe=self.recipe)
+        steps_count = len(steps)
+        if self.number > steps_count or self.number == None:
+            self.number = steps_count + 1
+        else:
+            steps_to_up = steps[self.number-1:]
+            for step_to_up in steps_to_up:
+                step_to_up.number += 1
+                step_to_up.save()
+        super(Step, self).save(*args, **kwargs)

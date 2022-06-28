@@ -149,9 +149,29 @@ class IngredientModelTestCase(TestCase):
 
 class StepModelTestCase(TestCase):
 
+    def setUp(self):
+        recipe = Recipe(title='przepis', description='opis przykładowego przepisu')
+        step = Step(number=1, description='opis pierwszego kroku', recipe=recipe)
+        step2 = Step(number=4, description='opis drugiego', recipe=recipe)
+        step3 = Step(number=2, description='opis trzeciego', recipe=recipe)
+        recipe.save()
+        step.save()
+        step2.save()
+        step3.save()
+
     def test_step_model(self):
         step = Step(number=1, description='lorem ipsum lorem ipsum')
         self.assertIsInstance(step, Step)
         self.assertEqual(step.number, 1)
         self.assertEqual(step.description, 'lorem ipsum lorem ipsum')
         self.assertEqual(str(step), str(1)+' Krok')
+
+    def test_relation_with_recipe(self):
+        recipe = Recipe.objects.get(id=1)
+        step1 = Step.objects.get(description='opis pierwszego kroku')
+        step2 = Step.objects.get(description='opis drugiego')
+        step3 = Step.objects.get(description='opis trzeciego')
+        self.assertEqual(step1.number, 1)
+        self.assertEqual(step2.number, 3)
+        self.assertEqual(step3.number, 2)
+        self.assertEqual(list(Step.objects.filter(recipe=recipe)), [step1, step2, step3])
