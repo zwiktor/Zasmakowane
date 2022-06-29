@@ -1,0 +1,35 @@
+.navbar {
+  background: pink;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: max-content auto max-content;
+  grid-template-areas: "logo menus toggler";
+  justify-items: stretch;
+  align-items: stretch;
+}
+nav > div:not(:first-child){
+  margin-left:20px;
+}
+
+.logo {
+  background: green;
+  grid-area: logo;
+  width: 60px;
+}
+
+.menus {
+  background: lightsalmon;
+  grid-area: menus;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.menus * {
+  padding: 5px;
+}
+
+.toggler {
+  background: lightskyblue;
+  grid-area: toggler;
+}
