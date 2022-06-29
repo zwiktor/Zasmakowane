@@ -61,7 +61,7 @@ class Step(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.number) + ' Krok' + recipe.title
+        return str(self.number) + ' Krok'
 
     def save(self, *args, **kwargs):
         steps = Step.objects.filter(recipe=self.recipe)
