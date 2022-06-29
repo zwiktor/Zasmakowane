@@ -6,9 +6,18 @@ class UrlTestCase(TestCase):
 
     def setUp(self):
         self.client = Client()
+        recipe = Recipe(title='Tytul Przepisu', description='krotki opis przepisu')
+        recipe.save()
+
         self.url_list = [
             '',
-            '/przepisy'
+            '/przepisy',
+            '/omnie',
+            f'/przepisy/{recipe.slug}',
+            f'/przepisy/{recipe.slug}/edit',
+            '/przepisy/new'
+
+
         ]
 
     def test_200_status_for_get_requests(self):
