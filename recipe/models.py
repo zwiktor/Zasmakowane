@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.text import slugify
 
 class Cuisine(models.Model):
     name = models.CharField(max_length=64)
@@ -26,9 +26,20 @@ class Recipe(models.Model):
     cuisines = models.ManyToManyField(Cuisine)
     tags = models.ManyToManyField(Tag)
     categories = models.ManyToManyField(Category)
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
-        return self.title
+        return self.slug
+
+    def save(self,*args, **kwargs):
+        numer_of_same_slug = len(Recipe.objects.filter(title=self.title))
+        if numer_of_same_slug > 0:
+            s = f'{self.title}-{numer_of_same_slug}'
+        else:
+            s = self.title
+        if not self.slug:
+            self.slug = slugify(s)
+        super(Recipe, self).save(*args, **kwargs)
 
 class Ingredient(models.Model):
     measurment = [
@@ -50,7 +61,7 @@ class Step(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.number) + ' Krok'
+        return str(self.number) + ' Krok' + recipe.title
 
     def save(self, *args, **kwargs):
         steps = Step.objects.filter(recipe=self.recipe)
