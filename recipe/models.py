@@ -27,6 +27,9 @@ class Recipe(models.Model):
     tags = models.ManyToManyField(Tag)
     categories = models.ManyToManyField(Category)
 
+    def __str__(self):
+        return self.title
+
 class Ingredient(models.Model):
     measurment = [
         ('GR', 'Gramy'),
