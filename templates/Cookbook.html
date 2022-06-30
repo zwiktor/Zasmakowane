@@ -1,3 +1,21 @@
 {% extends 'Base.html' %}
+{% load static %}
 
 {% block webtitle %}Przepisy{% endblock %}
+
+
+{% block content %}
+  <div class="recipe-list-content">
+    {% for new_recipe in new_recipes %}
+      <div class="recipe-card">
+        <img src="{% static 'img/dragonball.jpg' %}">
+        <h3 class="card-title">{{ new_recipe.title }}</h3>
+        <a href="{% url 'recipe' new_recipe.slug %}"
+           class="button-view">Sprawdź</a>
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+{% endblock %}

@@ -26,6 +26,8 @@ class Recipe(models.Model):
     cuisines = models.ManyToManyField(Cuisine)
     tags = models.ManyToManyField(Tag)
     categories = models.ManyToManyField(Category)
+    create_date = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
     slug = models.SlugField(unique=True)
 
     def __str__(self):
@@ -74,3 +76,9 @@ class Step(models.Model):
                 step_to_up.number += 1
                 step_to_up.save()
         super(Step, self).save(*args, **kwargs)
+
+class Comment(models.Model):
+    author = models.CharField(max_length=50)
+    text = models.TextField()
+    create_date = models.DateTimeField(auto_now=True)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)

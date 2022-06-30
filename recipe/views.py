@@ -17,7 +17,8 @@ class HomeView(View):
 
 class CookBook(View):
     def get(self, request):
-        context = {}
+        newest_recipes = Recipe.objects.all()
+        context = {'new_recipes': newest_recipes}
         return render(request, 'Cookbook.html', context)
 
     def post(self, requeset):
@@ -35,7 +36,8 @@ class AboutMe(View):
 
 class RecipeView(View):
     def get(self, request, slug):
-        context = {}
+        recipe = Recipe.objects.get(slug=slug)
+        context = {'recipe': recipe}
         return render(request, 'Recipe.html', context)
 
     def post(self, requeset):
