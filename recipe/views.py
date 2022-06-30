@@ -1,11 +1,14 @@
 from django.shortcuts import render, HttpResponse
 from django.views import View
+
+from .models import Recipe
 # Create your views here.
 
 
 class HomeView(View):
     def get(self, request):
-        context = {}
+        newest_recipes = Recipe.objects.all()
+        context = {'new_recipes': newest_recipes}
         return render(request, 'Home.html', context)
 
     def post(self, requeset):

@@ -1,3 +1,10 @@
 {% extends 'Base.html' %}
 
 {% block webtitle %}Strona Główna{% endblock %}
+
+
+{% block content %}
+  {% for new_recipe in new_recipes %}
+    {{ new_recipe.title }}
+  {% endfor %}
+{% endblock %}

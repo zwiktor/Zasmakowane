@@ -11,21 +11,21 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
+
   <nav class="navbar">
-    <div class="logo">
-      LoGo
-    </div>
-    <div class="menus">
-      <div>Przpeisy</div>
-      <div>O mnie</div>
-    </div>
-    <div class="toggler">
-      X
-    </div>
+    <ul>
+      <li><a href="{% url 'home_page' %}">Logo</a></li>
+      <li><a href="{% url 'recipes' %}">Przepisy</a></li>
+      <li><a href="{% url 'about' %}">O mnie</a></li>
+    </ul>
   </nav>
-  <main>
-    <h1>Welcome to My Website</h1>
-  </main>
+
+
+  {% block content %}
+  {% endblock %}
+
+
+
   <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>

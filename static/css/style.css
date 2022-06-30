@@ -1,35 +1,23 @@
-.navbar {
-  background: pink;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: max-content auto max-content;
-  grid-template-areas: "logo menus toggler";
-  justify-items: stretch;
-  align-items: stretch;
-}
-nav > div:not(:first-child){
-  margin-left:20px;
+.navbar ul {
+    background-color:lightpink ;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50px;
+    justify-content: center;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-.logo {
-  background: green;
-  grid-area: logo;
-  width: 60px;
+.navbar ul li {
+    background-color: pink;
+    list-style-type: None;
 }
 
-.menus {
-  background: lightsalmon;
-  grid-area: menus;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-}
 
-.menus * {
-  padding: 5px;
-}
 
-.toggler {
-  background: lightskyblue;
-  grid-area: toggler;
+.navbar ul li a{
+    color: black;
+    text-decoration: None;
+    line-height: 50px;
 }
