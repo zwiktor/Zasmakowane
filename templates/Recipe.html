@@ -10,9 +10,21 @@
         <h3 class="card-title">{{ recipe.title }}</h3>
         <a href="{% url 'recipe' recipe.slug %}"
            class="button-view">Sprawdź</a>
-
       </div>
-
   </div>
+  <div>
+    <form method="post" action="{% url 'recipe' recipe.slug %}">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Add</button>
+    </form>
+  </div>
+  <div class="comment-section">
+    {% for comment in comments %}
+      {{ comment.author }}
+      {{ comment.text }}
+    {% endfor %}
+  </div>
+
 
 {% endblock %}
