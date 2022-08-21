@@ -4,7 +4,9 @@
 
 
 {% block content %}
-  {% for new_recipe in new_recipes %}
+  <div>
+    {% for new_recipe in new_recipes %}
     {{ new_recipe.title }}
   {% endfor %}
+  </div>
 {% endblock %}
