@@ -4,27 +4,59 @@
 {% block webtitle %}{{ recipe.title }}{% endblock %}
 
 {% block content %}
-  <div class="recipe-list-content">
-      <div class="recipe-card">
-        <img src="{% static 'img/dragonball.jpg' %}">
-        <h3 class="card-title">{{ recipe.title }}</h3>
-        <a href="{% url 'recipe' recipe.slug %}"
-           class="button-view">Sprawdź</a>
-      </div>
+  <div class="recipe_header">
+    <div class="Recipe_img">
+      <img src="{% static 'img/dragonball.jpg' %}">
+    </div>
+    <div class="Recipe_title">
+      <h2>{{ recipe.title }}</h2>
+    </div>
+    <div class="Recipe_details">
+      <p>{{ recipe.description }}</p>
+    </div>
   </div>
-  <div>
-    <form method="post" action="{% url 'recipe' recipe.slug %}">
-      {% csrf_token %}
-      {{ form }}
-      <button type="submit">Add</button>
-    </form>
+
+  <div class="recipe_tags">
+    <i>Ikona</i>
+    <i>Ikona</i>
+    <i>Ikona</i>
   </div>
-  <div class="comment-section">
-    {% for comment in comments %}
-      {{ comment.author }}
-      {{ comment.text }}
-    {% endfor %}
+
+
+  <div class="Recipe_description">
+    <div class="Recipe_description_header">
+      <h2>Opis</h2><span>-------------------------------------------------------</span>
+    </div>
+    <div class="Recipe_description_body">
+      <p>{{ recipe.description }}</p>
+    </div>
   </div>
+
+  <div class="Recipe_ingredients">
+    <div class="Recipe_ingredients_header">
+      <h2>Składniki</h2><span>-------------------------------------------------------</span>
+    </div>
+    <div class="Recipe_ingredients_body">
+      {% for ingredient in ingredients %}
+        <p>{{ ingredient }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="Recipe_steps">
+    <div class="Recipe_steps_header">
+      <h2>Instrukcja</h2><span>-------------------------------------------------------</span>
+    </div>
+    <div class="Recipe_steps_body">
+      <p>Poprawić generowanie sie koroków, </p>
+      {% for step in steps %}
+        <p>{{ step }}</p>
+        <p>{{ step.description }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
+
 
 
 {% endblock %}

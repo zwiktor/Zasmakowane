@@ -206,8 +206,72 @@ body {
   }
 }
 
-
 /******************  /NAVBAR  *********************/
+
+
+/******************  /Recipe_site **********************/
+
+.recipe_header {  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  grid-template-rows: 0.1fr 1.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Recipe_title Recipe_title Recipe_img"
+    "Recipe_details Recipe_details Recipe_img";
+}
+
+.Recipe_img { grid-area: Recipe_img; }
+.Recipe_img img {
+    width: 100%;
+}
+.Recipe_title { grid-area: Recipe_title; }
+.Recipe_details { grid-area: Recipe_details; }
+
+
+.Recipe_description {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Recipe_description_header"
+    "Recipe_description_body";
+  grid-area: Recipe_description;
+}
+
+.Recipe_description_header {  grid-area: Recipe_description_header;}
+.Recipe_description_body { grid-area: Recipe_description_body; }
+
+.Recipe_ingredients {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Recipe_ingredients_header"
+    "Recipe_ingredients_body";
+  grid-area: Recipe_ingredients;
+}
+
+.Recipe_ingredients_header {  grid-area: Recipe_ingredients_header;}
+.Recipe_ingredients_body { grid-area: Recipe_ingredients_body; }
+
+.Recipe_steps {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Recipe_steps_header"
+    "Recipe_steps_body";
+  grid-area: Recipe_steps;
+}
+
+.Recipe_steps_header {  grid-area: Recipe_steps_header;}
+.Recipe_steps_body { grid-area: Recipe_steps_body; }
+
+
 
 
 .recipe-list-content {

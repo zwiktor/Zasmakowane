@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.views import View
 
-from .models import Recipe, Comment
+from .models import Recipe, Comment, Ingredient, Step
 from .forms import CommentForm
 # Create your views here.
 
@@ -38,9 +38,13 @@ class AboutMe(View):
 class RecipeView(View):
     def get(self, request, slug):
         recipe = Recipe.objects.get(slug=slug)
+        ingredients = Ingredient.objects.filter(recipe=recipe)
+        steps = Step.objects.filter(recipe=recipe)
         form = CommentForm()
         comments = Comment.objects.filter(recipe__slug=slug)
-        context = {'recipe': recipe, 'form': form, 'comments': comments}
+        context = {'recipe': recipe, 'form': form, 'comments': comments, 'ingredients':
+            ingredients, 'steps': steps}
+        print(context)
         return render(request, 'Recipe.html', context)
 
     def post(self, requeset):
