@@ -1,0 +1,37 @@
+[
+{
+    "model": "recipe.category",
+    "pk": 1,
+    "fields": {
+        "name": "Zupa"
+    }
+},
+{
+    "model": "recipe.category",
+    "pk": 2,
+    "fields": {
+        "name": "Danie glwne"
+    }
+},
+{
+    "model": "recipe.category",
+    "pk": 3,
+    "fields": {
+        "name": "Deser"
+    }
+},
+{
+    "model": "recipe.category",
+    "pk": 4,
+    "fields": {
+        "name": "Przekaska"
+    }
+},
+{
+    "model": "recipe.category",
+    "pk": 5,
+    "fields": {
+        "name": "sniadanie"
+    }
+}
+]

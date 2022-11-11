@@ -1,0 +1,42 @@
+[
+{
+    "model": "recipe.tag",
+    "pk": 1,
+    "fields": {
+        "name": "GlutenFree",
+        "icon": "icon1.png"
+    }
+},
+{
+    "model": "recipe.tag",
+    "pk": 2,
+    "fields": {
+        "name": "Fit",
+        "icon": "icon2.png"
+    }
+},
+{
+    "model": "recipe.tag",
+    "pk": 3,
+    "fields": {
+        "name": "LowCarb",
+        "icon": "icon3.png"
+    }
+},
+{
+    "model": "recipe.tag",
+    "pk": 4,
+    "fields": {
+        "name": "LactoseFree",
+        "icon": "icon4.png"
+    }
+},
+{
+    "model": "recipe.tag",
+    "pk": 5,
+    "fields": {
+        "name": "CheatMeal",
+        "icon": "icon5.png"
+    }
+}
+]

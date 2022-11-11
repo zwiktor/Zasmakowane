@@ -1,0 +1,202 @@
+[
+{
+    "model": "recipe.ingredient",
+    "pk": 6,
+    "fields": {
+        "name": "du┐e ziemniaki",
+        "measure": "GR",
+        "quantity": 150,
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 7,
+    "fields": {
+        "name": "kminek",
+        "measure": "GR",
+        "quantity": 5,
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 8,
+    "fields": {
+        "name": "m╣ka pszenna",
+        "measure": "GR",
+        "quantity": 200,
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 9,
+    "fields": {
+        "name": "mleko",
+        "measure": "ML",
+        "quantity": 180,
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 10,
+    "fields": {
+        "name": "ťwie┐e dro┐d┐e",
+        "measure": "GR",
+        "quantity": 15,
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 11,
+    "fields": {
+        "name": "cukier",
+        "measure": "GR",
+        "quantity": 40,
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 12,
+    "fields": {
+        "name": "olej do sma┐enia",
+        "measure": "ML",
+        "quantity": 200,
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 13,
+    "fields": {
+        "name": "Kasza jaglana",
+        "measure": "GR",
+        "quantity": 200,
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 14,
+    "fields": {
+        "name": "mleko krowie",
+        "measure": "ML",
+        "quantity": 600,
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 15,
+    "fields": {
+        "name": "Cukier waniliowy",
+        "measure": "GR",
+        "quantity": 25,
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 16,
+    "fields": {
+        "name": "Sliwki",
+        "measure": "GR",
+        "quantity": 1000,
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 17,
+    "fields": {
+        "name": "Cynamon",
+        "measure": "GR",
+        "quantity": 20,
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 18,
+    "fields": {
+        "name": "Wiorki kokosowe",
+        "measure": "GR",
+        "quantity": 25,
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 19,
+    "fields": {
+        "name": "du┐e ziemniaki",
+        "measure": "GR",
+        "quantity": 150,
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 20,
+    "fields": {
+        "name": "kminek",
+        "measure": "GR",
+        "quantity": 5,
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 21,
+    "fields": {
+        "name": "m╣ka pszenna",
+        "measure": "GR",
+        "quantity": 200,
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 22,
+    "fields": {
+        "name": "mleko",
+        "measure": "ML",
+        "quantity": 180,
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 23,
+    "fields": {
+        "name": "ťwie┐e dro┐d┐e",
+        "measure": "GR",
+        "quantity": 15,
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 24,
+    "fields": {
+        "name": "cukier",
+        "measure": "GR",
+        "quantity": 40,
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.ingredient",
+    "pk": 25,
+    "fields": {
+        "name": "olej do sma┐enia",
+        "measure": "ML",
+        "quantity": 200,
+        "recipe": 3
+    }
+}
+]

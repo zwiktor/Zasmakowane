@@ -19,7 +19,7 @@ body {
 
 .main-container {
     max-width: 1070px;
-    text-align: center;
+    text-align: left;
     margin: 0 auto;
     padding: 0 5%;
     height: 100%;
@@ -41,7 +41,7 @@ body {
 
 #navbar {
   --navbar-height: 64px;
-  position: fixed;
+  position: static;
   height: var(--navbar-height);
   background-color: var(--navbar-bg-color);
   left: 0;
@@ -211,6 +211,28 @@ body {
 
 /******************  /Recipe_site **********************/
 
+.recipe_image_section {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "recipe_image_section_left recipe_image_section_right";
+}
+
+.recipe_image_section_left { grid-area: recipe_image_section_left; }
+.recipe_image_section_right { grid-area: recipe_image_section_right; }
+
+.recipe_image_section_left img{
+    width: 100%;
+}
+
+.recipe_image_section_right img{
+    width: 100%;
+}
+
+
 .recipe_header {  display: grid;
   grid-template-columns: 3fr 3fr 3fr;
   grid-template-rows: 0.1fr 1.5fr;
@@ -231,7 +253,6 @@ body {
 
 .Recipe_description {  display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -245,7 +266,6 @@ body {
 
 .Recipe_ingredients {  display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -259,13 +279,13 @@ body {
 
 .Recipe_steps {  display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     "Recipe_steps_header"
     "Recipe_steps_body";
   grid-area: Recipe_steps;
+
 }
 
 .Recipe_steps_header {  grid-area: Recipe_steps_header;}

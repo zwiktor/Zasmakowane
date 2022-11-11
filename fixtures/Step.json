@@ -1,0 +1,128 @@
+[
+{
+    "model": "recipe.step",
+    "pk": 8,
+    "fields": {
+        "number": 1,
+        "description": "Ziemniaki obierz i ugotuj do miŕkkoťci, wystudč i przeciťnij przez praskŕ. Mleko podgrzej lekko, dodaj dro┐d┐e oraz cukier i wymieszaj.",
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 9,
+    "fields": {
+        "number": 2,
+        "description": "W misce po│╣cz mleko, ziemniaki oraz m╣kŕ. Dodaj kminek Knorr i wyrˇb ciasto. Przykryj ťciereczk╣ i odstaw w ciep│e miejsce na 1 godz. do wyroťniŕcia.",
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 10,
+    "fields": {
+        "number": 3,
+        "description": "W tym czasie wyciťnij 1 │y┐eczkŕ soku z cytryny, po│╣cz go ze ťmietan╣, pokrojonym szczypiorem, dodaj pieprz Knorr i wymieszaj.  Wstaw do lodˇwki.",
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 11,
+    "fields": {
+        "number": 4,
+        "description": "Z wyroťniŕtego ciasta uformuj niedu┐e placuszki wielkoťci d│oni i k│adč ostro┐nie na rozgrzanym oleju. Sma┐ z obu stron na lekko z│oty kolor. Po usma┐eniu placuszki ods╣cz na papierowym rŕczniku i podawaj z przygotowan╣ ťmietan╣.",
+        "recipe": 1
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 12,
+    "fields": {
+        "number": 1,
+        "description": "Kaszŕ wyp│ukaŠ, odcedziŠ, zalaŠ mlekiem, dodaŠ waniliŕ, przykryŠ i zagotowaŠ w garnku z grubym dnem, w miŕdzyczasie 1 - 2 razy zamieszaŠ.",
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 13,
+    "fields": {
+        "number": 2,
+        "description": "ZmniejszyŠ ogie˝ i gotowaŠ przezá20 minut. Piekarnik nagrzaŠ do 180 stopni C.",
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 14,
+    "fields": {
+        "number": 3,
+        "description": "îliwki umyŠ, osuszyŠ, usun╣Š pestki, pokroiŠ na pod│u┐ne kawa│ki. WymieszaŠ z cukrem i cynamonem.",
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 15,
+    "fields": {
+        "number": 4,
+        "description": "Na dno naczynia ┐aroodpornego wy│o┐yŠ po│owŕ kaszy jaglanej. Nastŕpnie wy│o┐yŠ ťliwki i przykryŠ reszt╣ kaszy.",
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 16,
+    "fields": {
+        "number": 5,
+        "description": "Miejscami u│o┐yŠ kawa│eczki mas│a i ca│oťŠ posypaŠ wiˇrkami.",
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 17,
+    "fields": {
+        "number": 6,
+        "description": "PrzykryŠ foli╣ aluminiow╣ i piec przezá40 minut.",
+        "recipe": 2
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 18,
+    "fields": {
+        "number": 1,
+        "description": "Ziemniaki obierz i ugotuj do miŕkkoťci, wystudč i przeciťnij przez praskŕ. Mleko podgrzej lekko, dodaj dro┐d┐e oraz cukier i wymieszaj.",
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 19,
+    "fields": {
+        "number": 2,
+        "description": "W misce po│╣cz mleko, ziemniaki oraz m╣kŕ. Dodaj kminek Knorr i wyrˇb ciasto. Przykryj ťciereczk╣ i odstaw w ciep│e miejsce na 1 godz. do wyroťniŕcia.",
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 20,
+    "fields": {
+        "number": 3,
+        "description": "W tym czasie wyciťnij 1 │y┐eczkŕ soku z cytryny, po│╣cz go ze ťmietan╣, pokrojonym szczypiorem, dodaj pieprz Knorr i wymieszaj.  Wstaw do lodˇwki.",
+        "recipe": 3
+    }
+},
+{
+    "model": "recipe.step",
+    "pk": 21,
+    "fields": {
+        "number": 4,
+        "description": "Z wyroťniŕtego ciasta uformuj niedu┐e placuszki wielkoťci d│oni i k│adč ostro┐nie na rozgrzanym oleju. Sma┐ z obu stron na lekko z│oty kolor. Po usma┐eniu placuszki ods╣cz na papierowym rŕczniku i podawaj z przygotowan╣ ťmietan╣.",
+        "recipe": 3
+    }
+}
+]

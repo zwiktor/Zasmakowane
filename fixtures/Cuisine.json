@@ -1,0 +1,37 @@
+[
+{
+    "model": "recipe.cuisine",
+    "pk": 1,
+    "fields": {
+        "name": "Staropolska"
+    }
+},
+{
+    "model": "recipe.cuisine",
+    "pk": 2,
+    "fields": {
+        "name": "Fusion"
+    }
+},
+{
+    "model": "recipe.cuisine",
+    "pk": 3,
+    "fields": {
+        "name": "Azjatycka"
+    }
+},
+{
+    "model": "recipe.cuisine",
+    "pk": 4,
+    "fields": {
+        "name": "Morska"
+    }
+},
+{
+    "model": "recipe.cuisine",
+    "pk": 5,
+    "fields": {
+        "name": "Podlaska"
+    }
+}
+]

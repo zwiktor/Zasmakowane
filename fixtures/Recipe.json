@@ -1,0 +1,176 @@
+[
+{
+    "model": "recipe.recipe",
+    "pk": 1,
+    "fields": {
+        "title": "Langosz ze ťmietan╣",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.",
+        "prep_time": 35,
+        "calories": 450,
+        "carb": 78,
+        "protein": 67,
+        "fat": 25,
+        "small_photo": "lasagne-z-sosem-beszamelowym.jpeg",
+        "big_photo_1": "wloska-lazania-zdjecie-ilustracyjne.jpg",
+        "big_photo_2": "lazania-1.jpg",
+        "create_date": "2022-11-11T16:41:35.686Z",
+        "active": true,
+        "slug": "langosz-ze-smietana",
+        "cuisines": [
+            2
+        ],
+        "tags": [
+            2,
+            4,
+            5
+        ],
+        "categories": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipe.recipe",
+    "pk": 2,
+    "fields": {
+        "title": "Kasza jaglana zapiekana ze ťliwkami",
+        "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+        "prep_time": 100,
+        "calories": 1400,
+        "carb": 120,
+        "protein": 60,
+        "fat": 28,
+        "small_photo": "indeks.jpg",
+        "big_photo_1": "indeks_UXxbYC1.jpg",
+        "big_photo_2": "indeks_4LdcUzk.jpg",
+        "create_date": "2022-11-11T17:23:16.840Z",
+        "active": true,
+        "slug": "kasza-jaglana-zapiekana-ze-sliwkami",
+        "cuisines": [
+            2
+        ],
+        "tags": [
+            1
+        ],
+        "categories": [
+            4
+        ]
+    }
+},
+{
+    "model": "recipe.recipe",
+    "pk": 3,
+    "fields": {
+        "title": "Langosz ze ťmietan╣",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.",
+        "prep_time": 35,
+        "calories": 450,
+        "carb": 78,
+        "protein": 67,
+        "fat": 25,
+        "small_photo": "lasagne-z-sosem-beszamelowym.jpeg",
+        "big_photo_1": "wloska-lazania-zdjecie-ilustracyjne.jpg",
+        "big_photo_2": "lazania-1.jpg",
+        "create_date": "2022-11-11T16:41:35.686Z",
+        "active": true,
+        "slug": "langosz-ze-smietana-1",
+        "cuisines": [
+            2
+        ],
+        "tags": [
+            2,
+            4,
+            5
+        ],
+        "categories": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipe.recipe",
+    "pk": 4,
+    "fields": {
+        "title": "Kasza jaglana zapiekana ze ťliwkami",
+        "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+        "prep_time": 100,
+        "calories": 1400,
+        "carb": 120,
+        "protein": 60,
+        "fat": 28,
+        "small_photo": "indeks.jpg",
+        "big_photo_1": "indeks_UXxbYC1.jpg",
+        "big_photo_2": "indeks_4LdcUzk.jpg",
+        "create_date": "2022-11-11T17:23:16.840Z",
+        "active": true,
+        "slug": "kasza-jaglana-zapiekana-ze-sliwkami-1",
+        "cuisines": [
+            2
+        ],
+        "tags": [
+            1
+        ],
+        "categories": [
+            4
+        ]
+    }
+},
+{
+    "model": "recipe.recipe",
+    "pk": 5,
+    "fields": {
+        "title": "Langosz ze ťmietan╣",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.",
+        "prep_time": 35,
+        "calories": 450,
+        "carb": 78,
+        "protein": 67,
+        "fat": 25,
+        "small_photo": "lasagne-z-sosem-beszamelowym.jpeg",
+        "big_photo_1": "wloska-lazania-zdjecie-ilustracyjne.jpg",
+        "big_photo_2": "lazania-1.jpg",
+        "create_date": "2022-11-11T16:41:35.686Z",
+        "active": true,
+        "slug": "langosz-ze-smietana-2",
+        "cuisines": [
+            2
+        ],
+        "tags": [
+            2,
+            4,
+            5
+        ],
+        "categories": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipe.recipe",
+    "pk": 6,
+    "fields": {
+        "title": "Kasza jaglana zapiekana ze ťliwkami",
+        "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+        "prep_time": 100,
+        "calories": 1400,
+        "carb": 120,
+        "protein": 60,
+        "fat": 28,
+        "small_photo": "indeks.jpg",
+        "big_photo_1": "indeks_UXxbYC1.jpg",
+        "big_photo_2": "indeks_4LdcUzk.jpg",
+        "create_date": "2022-11-11T17:23:16.840Z",
+        "active": true,
+        "slug": "kasza-jaglana-zapiekana-ze-sliwkami-2",
+        "cuisines": [
+            2
+        ],
+        "tags": [
+            1
+        ],
+        "categories": [
+            4
+        ]
+    }
+}
+]

@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 
+from Blog.settings import MEDIA_URL
+
 class Cuisine(models.Model):
     name = models.CharField(max_length=64)
 
@@ -9,6 +11,7 @@ class Cuisine(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=64)
+    icon = models.ImageField()
 
     def __str__(self):
         return self.name
@@ -23,9 +26,17 @@ class Category(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=256, default='Przepis')
     description = models.TextField(default='krotki opis')
+    prep_time = models.SmallIntegerField()
+    calories = models.SmallIntegerField(null=True)
+    carb = models.SmallIntegerField(null=True)
+    protein = models.SmallIntegerField(null=True)
+    fat = models.SmallIntegerField(null=True)
     cuisines = models.ManyToManyField(Cuisine)
     tags = models.ManyToManyField(Tag)
     categories = models.ManyToManyField(Category)
+    small_photo = models.ImageField()
+    big_photo_1 = models.ImageField()
+    big_photo_2 = models.ImageField(null=True)
     create_date = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
     slug = models.SlugField(unique=True)
@@ -58,23 +69,16 @@ class Ingredient(models.Model):
 
 
 class Step(models.Model):
-    number = models.IntegerField(default=1)
-    description = models.CharField(max_length=1024, default='Opis kroku')
+    number = models.IntegerField(default=0)
+    description = models.TextField(default='Opis kroku')
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.number) + ' Krok'
+        return self.recipe.title + ' - ' +  str(self.number) + ' Krok'
 
     def save(self, *args, **kwargs):
         steps = Step.objects.filter(recipe=self.recipe)
-        steps_count = len(steps)
-        if self.number > steps_count or self.number == None:
-            self.number = steps_count + 1
-        else:
-            steps_to_up = steps[self.number-1:]
-            for step_to_up in steps_to_up:
-                step_to_up.number += 1
-                step_to_up.save()
+        self.number = len(steps) + 1
         super(Step, self).save(*args, **kwargs)
 
 class Comment(models.Model):

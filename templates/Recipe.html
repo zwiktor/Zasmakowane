@@ -4,22 +4,34 @@
 {% block webtitle %}{{ recipe.title }}{% endblock %}
 
 {% block content %}
+  <div class="recipe_image_section">
+    <div class="recipe_image_section_left">
+      <img src="{{ recipe.big_photo_1.url }}">
+    </div>
+    <div class="recipe_image_section_right">
+      <img src="{{ recipe.big_photo_2.url }}">
+    </div>
+  </div>
   <div class="recipe_header">
     <div class="Recipe_img">
-      <img src="{% static 'img/dragonball.jpg' %}">
+      <img src="{{ recipe.small_photo.url }}">
     </div>
     <div class="Recipe_title">
       <h2>{{ recipe.title }}</h2>
     </div>
     <div class="Recipe_details">
-      <p>{{ recipe.description }}</p>
+      <p>Czas przygotowania{{ recipe.prep_time }}</p>
+      <p>Kalorie: {{ recipe.calories }}</p>
+      <p>Węglowodany: {{ recipe.carb }}</p>
+      <p>Białko: {{ recipe.protein }}</p>
+      <p>Tłuszcz: {{ recipe.fat }}</p>
     </div>
   </div>
 
   <div class="recipe_tags">
-    <i>Ikona</i>
-    <i>Ikona</i>
-    <i>Ikona</i>
+    {% for tag in tags %}
+      <img src="{{ tag.icon.url }}">
+    {% endfor %}
   </div>
 
 
@@ -48,10 +60,10 @@
       <h2>Instrukcja</h2><span>-------------------------------------------------------</span>
     </div>
     <div class="Recipe_steps_body">
-      <p>Poprawić generowanie sie koroków, </p>
       {% for step in steps %}
         <p>{{ step }}</p>
         <p>{{ step.description }}</p>
+        <p>  .</p>
       {% endfor %}
     </div>
   </div>
