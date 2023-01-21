@@ -5,17 +5,41 @@
 
 
 {% block content %}
-  <div class="recipe-list-content">
-    {% for new_recipe in new_recipes %}
-      <div class="recipe-card">
-        <img src="{{ new_recipe.small_photo.url }}">
-        <h3 class="card-title">{{ new_recipe.title }}</h3>
-        <a href="{% url 'recipe' new_recipe.slug %}"
-           class="button-view">Sprawdź</a>
-
-      </div>
-
-    {% endfor %}
+  <div class="Toggle_button">
+    <button onclick="show_side_bar()" class="dropbtn" >Filtruj</button>
   </div>
+  <div class="recipe-container">
+    <form id="show-side-bar" class="dropdown-content" method="get">
+      {% for field in recipe_filter.form %}
+          <div class="fieldWrapper"> {# -{{ forloop.counter }}#}
+              {{ field.errors }}
+              {{ field.label_tag }}
+              <hr>
+              {{ field }}
+              {% if field.help_text %}
+              <p class="help">{{ field.help_text|safe }}</p>
+              {% endif %}
+          </div>
+      {% endfor %}
+{#      {{ recipe_filter.form }}#}
+      <input type="submit" />
+    </form>
+
+    <div class="recipe-list-content">
+      {% for new_recipe in recipe_filter.qs %}
+        <div class="recipe-card " onclick="window.location.href = '/przepisy/'
+              + '{{ new_recipe.slug }}';">
+          <img src="{{ new_recipe.small_photo.url }}">
+          <h3 class="card-title">{{ new_recipe.title }}</h3>
+
+        </div>
+
+      {% endfor %}
+    </div>
+
+  </div>
+
+
+
 
 {% endblock %}

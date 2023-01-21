@@ -4,15 +4,74 @@
 
 
 {% block content %}
-  <div>
-
+  <div class="home-page-intro">
+    <h1>Cześc na  moim blogu</h1>
+    <p>znajdziesz tu pyszne przempisy które gotuję na codzień</p>
   </div>
 
-  <div>
-    {% for new_recipe in new_recipes %}
-    {{ new_recipe.title }}
-  {% endfor %}
-
-
+  <div class="header_with_line">
+  <h2>Ostatnio dodane</h2>
+    <hr>
   </div>
+  <div class="home-last-added">
+    {% for new_recipe in newest_recipes %}
+      <div class="recipe-card" onclick="window.location.href = '/przepisy/'
+            + '{{ new_recipe.slug }}';">
+        <img src="{{ new_recipe.small_photo.url }}">
+        <h3 class="card-title">{{ new_recipe.title }}</h3>
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+  <div class="home-page-intro">
+    <p>Na moim blogu są tylko przepisy które lubie, oraz takie które kiedyś zrobiłam. Możesz
+      zobaczyć je w szysktkie w zakładce Przepisy.</p>
+    <button class="home-redirect-button btn-3" onclick="window.location.href = '/przepisy';">
+      <span>Wszystkie Przepisy</span></button>
+  </div>
+
+  <div class="header_with_line">
+    <h2>Moje ulubione</h2>
+    <hr>
+  </div>
+  <div class="home-last-added">
+    {% for new_recipe in newest_recipes %}
+      <div class="recipe-card" onclick="window.location.href = '/przepisy/'
+            + '{{ new_recipe.slug }}';">
+        <img src="{{ new_recipe.small_photo.url }}">
+        <h3 class="card-title">{{ new_recipe.title }}</h3>
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+  <div class="home-page-intro">
+    <p>Na moim blogu są tylko przepisy które lubie, oraz takie które kiedyś zrobiłam. Możesz
+      zobaczyć je w szysktkie w zakładce Przepisy.</p>
+    <button class="home-redirect-button btn-3" onclick="window.location.href = '/omnie';"><span>O
+      Mnie</span></button>
+  </div>
+
+  <div class="header_with_line">
+    <h2>Kuchnia Grecka</h2>
+    <hr>
+  </div>
+  <div class="home-last-added">
+    {% for new_recipe in newest_recipes %}
+      <div class="recipe-card" onclick="window.location.href = '/przepisy/'
+            + '{{ new_recipe.slug }}';">
+        <img src="{{ new_recipe.small_photo.url }}">
+        <h3 class="card-title">{{ new_recipe.title }}</h3>
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+
+
+
 {% endblock %}

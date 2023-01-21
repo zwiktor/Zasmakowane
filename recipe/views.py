@@ -3,13 +3,15 @@ from django.views import View
 
 from .models import Recipe, Comment, Ingredient, Step, Tag
 from .forms import CommentForm
+from .filters import RecipeFilter
 # Create your views here.
 
 
 class HomeView(View):
     def get(self, request):
-        newest_recipes = Recipe.objects.all()
-        context = {'new_recipes': newest_recipes}
+        newest_recipes = Recipe.objects.all().order_by('create_date')[:4]
+        fit_recipes = Recipe.objects.filter(tags=2)
+        context = {'newest_recipes': newest_recipes, 'fit_recipes': fit_recipes}
         return render(request, 'Home.html', context)
 
     def post(self, requeset):
@@ -19,7 +21,9 @@ class HomeView(View):
 class CookBook(View):
     def get(self, request):
         newest_recipes = Recipe.objects.all()
-        context = {'new_recipes': newest_recipes}
+        recipe_filter = RecipeFilter(request.GET, queryset=newest_recipes)
+        print(recipe_filter.form)
+        context = {'new_recipes': newest_recipes, 'recipe_filter': recipe_filter}
         return render(request, 'Cookbook.html', context)
 
     def post(self, requeset):

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body class="bg-pattern">
 
 
 <div class="main-container">
@@ -18,7 +18,7 @@
   <header id="navbar">
     <nav class="navbar-container container">
       <div class="img-container">
-        <img src="{% static 'img/Logo.png' %}">
+        <a href="{% url 'home_page' %}"><img src="{% static 'img/Logo.png' %}"></a>
       </div>
       <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu"
               aria-expanded="false">
@@ -42,7 +42,64 @@
   </div>
   {% block content %}
   {% endblock %}
+
 </div>
+{# footer #}
+
+<footer class="footer-container-background">
+  <div class="footer-container">
+  <div class="footer-about">
+    <h1>Zasmakowane</h1>
+    <p>opis blogu jako stronki opis blogu jako stronki opis blogu jako stronki
+      opis blogu jako stronki opis blogu jako stronki opis blogu jako stronki
+      opis blogu jako stronki </p>
+    <div class="icons-container">
+      <a href="\"><img src="/static/img/facebook-app-icon.webp" class="icons"></img></a>
+      <a href="\"><img src="/static/img/ig-instagram-icon.webp" class="icons"></img></a>
+      <a href="\"><img src="/static/img/youtube-icon.webp" class="icons"></img></a>
+      <a href="\"><img src="/static/img/pinterest-icon.webp" class="icons"></img></a>
+    </div>
+  </div>
+  <div class="footer-list-section">
+    <div class="footer-list">
+      <dvi class="footer-tags">
+        <h3>Tagi</h3>
+        <ul>
+          <li><a href="http://127.0.0.1:8000/przepisy?tags=1&title=">GlutenFree</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?tags=2&title=">Fit</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?tags=3&title=">LowCarb</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?tags=4&title=">LactoseFree</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?tags=5&title=">CheatMeal</a></li>
+        </ul>
+      </dvi>
+      <dvi class="footer-cousines">
+        <h3>Kuchnia</h3>
+        <ul>
+          <li><a href="http://127.0.0.1:8000/przepisy?cuisines=1&title=">Staropolska</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?cuisines=2&title=">Fusion</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?cuisines=3&title=">Azjatycka</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?cuisines=4&title=">Morska</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?cuisines=5&title=">Podlaska</a></li>
+        </ul>
+      </dvi>
+      </dvi>
+      <dvi class="footer-categories">
+        <h3>Kategoria</h3>
+        <ul>
+          <li><a href="http://127.0.0.1:8000/przepisy?categories=1&title=">Zupa</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?categories=2&title=">Danie glwne</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?categories=3&title=">Deser</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?categories=4&title=">Przekaska</a></li>
+          <li><a href="http://127.0.0.1:8000/przepisy?categories=5&title=">Sniadanie</a></li>
+        </ul>
+      </dvi>
+      </dvi>
+    </div>
+    <p>Kontakt: Adres Mailowy</p>
+  </div>
+  </div>
+</footer>
+
 
 
 
