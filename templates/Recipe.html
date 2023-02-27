@@ -4,71 +4,148 @@
 {% block webtitle %}{{ recipe.title }}{% endblock %}
 
 {% block content %}
+  <div>
+    <h1>{{ recipe.title }}</h1>
+    <p class="recipe-header-date">data dodania: {{ recipe.create_date }}</p>
+    <p class="recipe-header-tags"> Tagi:
+      <span>
+        {% for tag in tags %}
+          {{ tag.name }},
+        {% endfor  %}
+      </span>
+    </p>
+  </div>
+
   <div class="recipe_image_section">
-    <div class="recipe_image_section_left">
-      <img src="{{ recipe.big_photo_1.url }}">
-    </div>
-    <div class="recipe_image_section_right">
-      <img src="{{ recipe.big_photo_2.url }}">
-    </div>
+    <img src="{{ recipe.big_photo_1.url }}">
   </div>
-  <div class="recipe_header">
-    <div class="Recipe_img">
-      <img src="{{ recipe.small_photo.url }}">
-    </div>
-    <div class="Recipe_title">
-      <h2>{{ recipe.title }}</h2>
-    </div>
-    <div class="Recipe_details">
-      <p>Czas przygotowania{{ recipe.prep_time }}</p>
-      <p>Kalorie: {{ recipe.calories }}</p>
-      <p>Węglowodany: {{ recipe.carb }}</p>
-      <p>Białko: {{ recipe.protein }}</p>
-      <p>Tłuszcz: {{ recipe.fat }}</p>
-    </div>
-  </div>
-
-  <div class="recipe_tags">
-    {% for tag in tags %}
-      <img src="{{ tag.icon.url }}">
-    {% endfor %}
-  </div>
-
 
   <div class="Recipe_description">
-    <div class="Recipe_description_header">
-      <h2>Opis</h2><span>-------------------------------------------------------</span>
-    </div>
-    <div class="Recipe_description_body">
-      <p>{{ recipe.description }}</p>
-    </div>
+    <h2>O przepisie</h2><hr>
+    <p>{{ recipe.description }}</p>
   </div>
 
-  <div class="Recipe_ingredients">
-    <div class="Recipe_ingredients_header">
-      <h2>Składniki</h2><span>-------------------------------------------------------</span>
-    </div>
-    <div class="Recipe_ingredients_body">
-      {% for ingredient in ingredients %}
-        <p>{{ ingredient }}</p>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="Recipe_steps">
-    <div class="Recipe_steps_header">
-      <h2>Instrukcja</h2><span>-------------------------------------------------------</span>
-    </div>
-    <div class="Recipe_steps_body">
-      {% for step in steps %}
-        <p>{{ step }}</p>
-        <p>{{ step.description }}</p>
-        <p>  .</p>
-      {% endfor %}
-    </div>
+  <div class="recipe_image_section">
+    <img src="{{ recipe.big_photo_2.url }}">
   </div>
 
 
+
+
+  <div class="recipe-main-card">
+    <div class="recipe_header">
+      <div class="Recipe_img">
+        <img src="{{ recipe.small_photo.url }}">
+      </div>
+      <div class="Recipe_details">
+        <h2>{{ recipe.title }}</h2>
+        <div>
+          <span class="clock-icon"></span>
+          <p class="clocl-icon-text">Czas przygotowania {{ recipe.prep_time }}min</p>
+        </div>
+        <div>
+          <i class="clock-icon"></i>
+          <p class="clocl-icon-text">Czas gotowania {{ recipe.prep_time }}min</p>
+        </div>
+        <div>
+          <i class="clock-icon"></i>
+          <p class="clocl-icon-text">Czas Lącznie {{ recipe.prep_time  }}min</p>
+        </div>
+
+        <div>
+           <span class="food-icon"></span>
+          <p class="clocl-icon-text">Kalorie: {{ recipe.calories }}</p>
+        </div>
+        <div>
+           <span class="food-icon"></span>
+          <p class="clocl-icon-text">Ilość porcji: {{ recipe.calories }}</p>
+        </div>
+        <div>
+           <span class="food-icon"></span>
+          <p class="clocl-icon-text">Kalorie/porcje: {{ recipe.calories }}</p>
+        </div>
+
+        <div class="cousine_category">
+          <p>
+            Kategoria: 
+            {% for category in categories %}
+              <span>{{ category }},</span>
+            {% endfor %}
+          </p>
+          <p>
+            Kuchnia:
+            {% for cuisine in cuisines %}
+              <span>{{ cuisine }},</span>
+            {% endfor %}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+      <div class="recipe-header-elements">
+        <div class="recipe-header-1 col-size-3">
+          <p>Białko</p>
+          <p>{{ recipe.protein }} g</p>
+        </div>
+        <div class="recipe-header-2 col-size-3">
+          <p>Węglowodany</p>
+          <p>{{ recipe.carb }} g</p>
+        </div>
+        <div class="recipe-header-3 col-size-3">
+          <p>Tłuszcz</p>
+          <p>{{ recipe.fat }} g</p>
+        </div>
+      </div>
+    <hr>
+
+
+    <div class="Recipe_ingredients">
+      <div class="Recipe_ingredients_header">
+        <h2>Składniki</h2><span>-------------------------------------------------------</span>
+      </div>
+      <div class="Recipe_ingredients_body">
+        {% for ingredient in ingredients %}
+          <label>
+              <input type="checkbox">
+              <span>  {{ ingredient }}</span>
+          </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="Recipe_steps">
+      <div class="Recipe_steps_header">
+        <h2>Instrukcja</h2><span>-------------------------------------------------------</span>
+      </div>
+      <div class="Recipe_steps_body">
+        {% for step in steps %}
+          <div class="recipe_setp_element" onclick="this.classList.toggle('text-crossed')">
+            <p>{{ step.number }} - Krok</p>
+            <p>{{ step.description }}</p>
+          </div>
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Dodaj komentarz</button>
+  </form>
+
+  <div>
+  {% for comment in comments %}
+    <div>
+      <p>{{ comment.create_date }}</p>
+      <p>{{ comment.author }}</p>
+      <p>{{ comment.text }}</p>
+    </div>
+
+  {% endfor %}
+ </div>
 
 
 {% endblock %}

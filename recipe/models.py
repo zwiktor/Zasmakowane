@@ -56,17 +56,18 @@ class Recipe(models.Model):
 
 class Ingredient(models.Model):
     measurment = [
-        ('GR', 'Gramy'),
-        ('ML', 'Mililitry'),
+        ('gr', 'Gramy'),
+        ('ml', 'Mililitry'),
     ]
     name = models.CharField(max_length=128, default='Produkt')
-    measure = models.CharField(max_length=2, choices=measurment, default='GR')
-    quantity = models.IntegerField(default=1)
+    measure = models.CharField(max_length=2, choices=measurment, default='', blank=True, null=True)
+    quantity = models.IntegerField(default=None, null=True, blank=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return ' '.join([self.name, str(self.quantity), self.measure])
-
+        if self.quantity and self.measure:
+            return ' '.join([str(self.quantity), self.measure, self.name])
+        return self.name
 
 class Step(models.Model):
     number = models.IntegerField(default=0)

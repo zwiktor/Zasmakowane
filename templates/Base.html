@@ -13,12 +13,17 @@
 <body class="bg-pattern">
 
 
-<div class="main-container">
+
   {# Navigation bar #}
   <header id="navbar">
     <nav class="navbar-container container">
       <div class="img-container">
-        <a href="{% url 'home_page' %}"><img src="{% static 'img/Logo.png' %}"></a>
+        <a class="nav-img-big" href="{% url 'home_page' %}">
+          <img src="{% static 'img/Logo.png' %}">
+        </a>
+        <a class="nav-img-small" href="{% url 'home_page' %}">
+          <img src="{% static 'img/Logo_napis.webp' %}">
+        </a>
       </div>
       <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu"
               aria-expanded="false">
@@ -40,8 +45,11 @@
   <div class="navbar-gap">
 
   </div>
-  {% block content %}
+
+<div class="main-container">
+    {% block content %}
   {% endblock %}
+
 
 </div>
 {# footer #}

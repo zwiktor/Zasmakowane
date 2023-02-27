@@ -15,15 +15,27 @@
               {{ field.errors }}
               {{ field.label_tag }}
               <hr>
-              {{ field }}
+              {% if field.id_for_label == 'id_title' %}
+                <input class="input-text" type="text" name="title" id="id_title"
+                       placeholder="podaj tytuł przepisu...">
+              {% else %}
+                {{ field }}
+              {% endif %}
+
               {% if field.help_text %}
               <p class="help">{{ field.help_text|safe }}</p>
               {% endif %}
           </div>
       {% endfor %}
 {#      {{ recipe_filter.form }}#}
-      <input type="submit" />
+      <div class="filter-submit-button">
+        <input type="submit" value="Filtruj" />
+      </div>
     </form>
+    <div id="show-side-bar-backgound" class="backgound_for_sidebar" >
+
+    </div>
+
 
     <div class="recipe-list-content">
       {% for new_recipe in recipe_filter.qs %}

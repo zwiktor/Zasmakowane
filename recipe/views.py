@@ -1,7 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.views import View
 
-from .models import Recipe, Comment, Ingredient, Step, Tag
+from .models import Recipe, Comment, Ingredient, Step, Tag, Cuisine, Category
 from .forms import CommentForm
 from .filters import RecipeFilter
 # Create your views here.
@@ -22,7 +22,6 @@ class CookBook(View):
     def get(self, request):
         newest_recipes = Recipe.objects.all()
         recipe_filter = RecipeFilter(request.GET, queryset=newest_recipes)
-        print(recipe_filter.form)
         context = {'new_recipes': newest_recipes, 'recipe_filter': recipe_filter}
         return render(request, 'Cookbook.html', context)
 
@@ -45,17 +44,23 @@ class RecipeView(View):
         ingredients = Ingredient.objects.filter(recipe=recipe)
         steps = Step.objects.filter(recipe=recipe)
         tags = Tag.objects.filter(recipe=recipe)
+        cuisines = Cuisine.objects.filter(recipe=recipe)
+        categories = Category.objects.filter(recipe=recipe)
         form = CommentForm()
         comments = Comment.objects.filter(recipe__slug=slug)
         context = {'recipe': recipe, 'form': form, 'comments': comments, 'ingredients':
-            ingredients, 'steps': steps, 'tags': tags}
+            ingredients, 'steps': steps, 'tags': tags, 'cuisines':cuisines, 'categories':categories}
         return render(request, 'Recipe.html', context)
 
-    def post(self, requeset):
-        form_data = CommentForm(request.POST)
+    def post(self, requeset, slug):
+        recipe = Recipe.objects.get(slug=slug)
+        form_data = CommentForm(requeset.POST, instance=recipe)
         if form_data.is_valid():
-            pass
-        pass
+            obj = Comment(**form_data.cleaned_data)
+            obj.recipe = recipe
+            obj.save()
+
+        return redirect('recipe', recipe.slug)
 
 
 class RecipeCreate(View):

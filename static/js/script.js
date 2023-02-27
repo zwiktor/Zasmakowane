@@ -13,15 +13,10 @@ navbarToggle.addEventListener("click", toggleNavbarVisibility);
 navbarLinksContainer.addEventListener("click", (e) => e.stopPropagation());
 navbarMenu.addEventListener("click", toggleNavbarVisibility);
 
-// const para = document.createElement('hr');
-// const element = document.getElementById("show-side-bar");
-// const element_form = element.getElementsByTagName('')
-//
-// element.appendChild[1](para);
-
 
 function show_side_bar() {
   document.getElementById("show-side-bar").classList.toggle("show-form");
+  document.getElementById("show-side-bar-backgound").classList.toggle("show-form-backgound");
 }
 
 window.onclick = function(event) {
@@ -32,6 +27,7 @@ window.onclick = function(event) {
       var openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show-form')) {
         openDropdown.classList.remove('show-form');
+        document.getElementById("show-side-bar-backgound").classList.remove("show-form-backgound");
       }
     }
   }

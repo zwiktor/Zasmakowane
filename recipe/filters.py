@@ -23,8 +23,3 @@ class RecipeFilter(django_filters.FilterSet):
         model = Recipe
         fields = ['categories', 'tags', 'cuisines', 'title']
 
-        # gamemodes = django_filters.ModelMultipleChoiceFilter(
-        #     queryset=GameMode.objects.all(),
-        #     label='Game modes (or)',
-        #     widget=forms.CheckboxSelectMultiple,
-        # )
