@@ -5,15 +5,17 @@
 
 {% block content %}
   <div>
-    <h1>{{ recipe.title }}</h1>
+    <h1 class="recipe_title">{{ recipe.title }}</h1>
     <p class="recipe-header-date">data dodania: {{ recipe.create_date }}</p>
-    <p class="recipe-header-tags"> Tagi:
-      <span>
-        {% for tag in tags %}
-          {{ tag.name }},
-        {% endfor  %}
-      </span>
-    </p>
+    <div class="tag-container">
+      <p class="tag-container-head">Tagi:</p>
+      {% for tag in tags %}
+        <div class="tag_box" style="background-color: {{ tag.color }}">
+          <p title="{{ tag.name }}" class="tag_box_text">{{ tag.short_name }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
   </div>
 
   <div class="recipe_image_section">
@@ -39,43 +41,37 @@
       </div>
       <div class="Recipe_details">
         <h2>{{ recipe.title }}</h2>
-        <div>
-          <span class="clock-icon"></span>
-          <p class="clocl-icon-text">Czas przygotowania {{ recipe.prep_time }}min</p>
-        </div>
-        <div>
-          <i class="clock-icon"></i>
-          <p class="clocl-icon-text">Czas gotowania {{ recipe.prep_time }}min</p>
-        </div>
-        <div>
-          <i class="clock-icon"></i>
-          <p class="clocl-icon-text">Czas Lącznie {{ recipe.prep_time  }}min</p>
-        </div>
-
-        <div>
-           <span class="food-icon"></span>
-          <p class="clocl-icon-text">Kalorie: {{ recipe.calories }}</p>
-        </div>
-        <div>
-           <span class="food-icon"></span>
-          <p class="clocl-icon-text">Ilość porcji: {{ recipe.calories }}</p>
-        </div>
-        <div>
-           <span class="food-icon"></span>
-          <p class="clocl-icon-text">Kalorie/porcje: {{ recipe.calories }}</p>
-        </div>
-
+        {% if recipe.prep_time %}
+          <p class="clocl-icon-text"><span class="clock-icon"></span>Czas przygotowania: {{ recipe.prep_time }}min</p>
+        {% endif %}
+        {% if recipe.cooking_time %}
+          <p class="clocl-icon-text"><span class="clock-icon"></span>Czas gotowania: {{ recipe.cooking_time }}min</p>
+        {% endif %}
+        {% if recipe.sum_time  %}
+          <p class="clocl-icon-text"><span class="clock-icon"></span>Czas Lącznie: {{ recipe.sum_time  }}min</p>
+        {% endif %}
+        {% if recipe.calories  %}
+            <p class="clocl-icon-text"><span class="food-icon"></span>Kalorie: {{ recipe.calories }}</p>
+        {% endif %}
+        {% if recipe.portions  %}
+            <p class="clocl-icon-text"><span class="food-icon"></span>Ilość porcji:
+              {{ recipe.portions  }}</p>
+        {% endif %}
+        {% if recipe.calories_per_portion  %}
+            <p class="clocl-icon-text"><span class="food-icon"></span>Kalorie/porcje:
+              {{ recipe.calories_per_portion  }}</p>
+        {% endif %}
         <div class="cousine_category">
           <p>
             Kategoria: 
             {% for category in categories %}
-              <span>{{ category }},</span>
+              <span>{{ category }} </span>
             {% endfor %}
           </p>
           <p>
             Kuchnia:
             {% for cuisine in cuisines %}
-              <span>{{ cuisine }},</span>
+              <span>{{ cuisine }} </span>
             {% endfor %}
           </p>
         </div>
@@ -105,11 +101,17 @@
         <h2>Składniki</h2><span>-------------------------------------------------------</span>
       </div>
       <div class="Recipe_ingredients_body">
-        {% for ingredient in ingredients %}
-          <label>
-              <input type="checkbox">
-              <span>  {{ ingredient }}</span>
-          </label>
+        {% for group in groups %}
+          <p class="ingredients-group-header"> {{ group.name }}</p>
+          <div class="ingredients-group">
+            {% for ingredient in group.ingredient_set.all %}
+              <label class="ingredien-element">
+                  <input type="checkbox">
+                  <span>  {{ ingredient.name }}</span>
+              </label>
+            {% endfor %}
+          </div>
+
         {% endfor %}
       </div>
     </div>
@@ -121,7 +123,7 @@
       <div class="Recipe_steps_body">
         {% for step in steps %}
           <div class="recipe_setp_element" onclick="this.classList.toggle('text-crossed')">
-            <p>{{ step.number }} - Krok</p>
+            <p>{{ step.number }}.</p>
             <p>{{ step.description }}</p>
           </div>
         {% endfor %}
@@ -130,22 +132,23 @@
       </div>
     </div>
   </div>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Dodaj komentarz</button>
-  </form>
 
-  <div>
-  {% for comment in comments %}
-    <div>
-      <p>{{ comment.create_date }}</p>
-      <p>{{ comment.author }}</p>
-      <p>{{ comment.text }}</p>
-    </div>
-
-  {% endfor %}
- </div>
+{#  <form method="POST">#}
+{#    {% csrf_token %}#}
+{#    {{ form }}#}
+{#    <button type="submit">Dodaj komentarz</button>#}
+{#  </form>#}
+{##}
+{#  <div>#}
+{#  {% for comment in comments %}#}
+{#    <div>#}
+{#      <p>{{ comment.create_date }}</p>#}
+{#      <p>{{ comment.author }}</p>#}
+{#      <p>{{ comment.text }}</p>#}
+{#    </div>#}
+{##}
+{#  {% endfor %}#}
+{# </div>#}
 
 
 {% endblock %}

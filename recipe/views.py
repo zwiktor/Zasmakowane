@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views import View
 
-from .models import Recipe, Comment, Ingredient, Step, Tag, Cuisine, Category
+from .models import Recipe, Comment, Ingredient, Step, Tag, Cuisine, Category, Ingedient_group
 from .forms import CommentForm
 from .filters import RecipeFilter
 # Create your views here.
@@ -41,15 +41,16 @@ class AboutMe(View):
 class RecipeView(View):
     def get(self, request, slug):
         recipe = Recipe.objects.get(slug=slug)
-        ingredients = Ingredient.objects.filter(recipe=recipe)
+        groups = Ingedient_group.objects.filter(recipe=recipe)
         steps = Step.objects.filter(recipe=recipe)
+        steps = sorted(steps, key=lambda x: x.number)
         tags = Tag.objects.filter(recipe=recipe)
         cuisines = Cuisine.objects.filter(recipe=recipe)
         categories = Category.objects.filter(recipe=recipe)
         form = CommentForm()
         comments = Comment.objects.filter(recipe__slug=slug)
-        context = {'recipe': recipe, 'form': form, 'comments': comments, 'ingredients':
-            ingredients, 'steps': steps, 'tags': tags, 'cuisines':cuisines, 'categories':categories}
+        context = {'recipe': recipe, 'form': form, 'comments': comments, 'groups':
+            groups, 'steps': steps, 'tags': tags, 'cuisines':cuisines, 'categories':categories}
         return render(request, 'Recipe.html', context)
 
     def post(self, requeset, slug):

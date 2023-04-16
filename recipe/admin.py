@@ -1,5 +1,5 @@
 from django.contrib import admin
-from recipe.models import Recipe, Ingredient, Category, Cuisine, Tag, Step
+from recipe.models import Recipe, Ingredient, Category, Cuisine, Tag, Step, Ingedient_group
 
 # Register your models here.
 
@@ -7,10 +7,12 @@ from recipe.models import Recipe, Ingredient, Category, Cuisine, Tag, Step
 class RecipeAdmin(admin.ModelAdmin):
     exclude = ('slug',)
 
-@admin.register(Step)
-class RecipeAdmin(admin.ModelAdmin):
-    exclude = ('number',)
+# @admin.register(Step)
+# class RecipeAdmin(admin.ModelAdmin):
+#     exclude = ('number',)
 
+admin.site.register(Step)
+admin.site.register(Ingedient_group)
 admin.site.register(Ingredient)
 admin.site.register(Category)
 admin.site.register(Cuisine)

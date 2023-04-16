@@ -11,7 +11,9 @@ class Cuisine(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=64)
-    icon = models.ImageField()
+    short_name = models.CharField(max_length=2, default='T')
+    color = models.CharField(max_length=7, default='#ff5733')
+
 
     def __str__(self):
         return self.name
@@ -26,11 +28,15 @@ class Category(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=256, default='Przepis')
     description = models.TextField(default='krotki opis')
-    prep_time = models.SmallIntegerField()
-    calories = models.SmallIntegerField(null=True)
-    carb = models.SmallIntegerField(null=True)
-    protein = models.SmallIntegerField(null=True)
-    fat = models.SmallIntegerField(null=True)
+    prep_time = models.SmallIntegerField(null=True)
+    cooking_time = models.SmallIntegerField(null=True)
+    sum_time = models.SmallIntegerField(null=True)
+    calories = models.DecimalField(decimal_places=1, max_digits=6, null=True)
+    portions = models.SmallIntegerField(null=True)
+    calories_per_portion = models.DecimalField(decimal_places=1, max_digits=5, null=True)
+    carb = models.DecimalField(decimal_places=1, max_digits=5,null=True)
+    protein = models.DecimalField(decimal_places=1, max_digits=5,null=True)
+    fat = models.DecimalField(decimal_places=1, max_digits=5,null=True)
     cuisines = models.ManyToManyField(Cuisine)
     tags = models.ManyToManyField(Tag)
     categories = models.ManyToManyField(Category)
@@ -54,6 +60,15 @@ class Recipe(models.Model):
             self.slug = slugify(s)
         super(Recipe, self).save(*args, **kwargs)
 
+
+class Ingedient_group(models.Model):
+    name = models.CharField(max_length=128, default='Produkt')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.recipe.title + ' - ' + self.name
+
+
 class Ingredient(models.Model):
     measurment = [
         ('gr', 'Gramy'),
@@ -62,11 +77,11 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=128, default='Produkt')
     measure = models.CharField(max_length=2, choices=measurment, default='', blank=True, null=True)
     quantity = models.IntegerField(default=None, null=True, blank=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    group = models.ForeignKey(Ingedient_group, on_delete=models.CASCADE)
 
     def __str__(self):
         if self.quantity and self.measure:
-            return ' '.join([str(self.quantity), self.measure, self.name])
+            return self.group.recipe.title + ' - ' + self.group.name + ' - ' + self.name
         return self.name
 
 class Step(models.Model):
@@ -77,10 +92,10 @@ class Step(models.Model):
     def __str__(self):
         return self.recipe.title + ' - ' +  str(self.number) + ' Krok'
 
-    def save(self, *args, **kwargs):
-        steps = Step.objects.filter(recipe=self.recipe)
-        self.number = len(steps) + 1
-        super(Step, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     steps = Step.objects.filter(recipe=self.recipe)
+    #     self.number = len(steps) + 1
+    #     super(Step, self).save(*args, **kwargs)
 
 class Comment(models.Model):
     author = models.CharField(max_length=50)
