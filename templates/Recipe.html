@@ -54,7 +54,7 @@
             <p class="clocl-icon-text"><span class="food-icon"></span>Kalorie: {{ recipe.calories }}</p>
         {% endif %}
         {% if recipe.portions  %}
-            <p class="clocl-icon-text"><span class="food-icon"></span>Ilość porcji:
+            <p class="clocl-icon-text"><span class="food-icon"></span>Liczba porcji:
               {{ recipe.portions  }}</p>
         {% endif %}
         {% if recipe.calories_per_portion  %}
@@ -71,7 +71,11 @@
           <p>
             Kuchnia:
             {% for cuisine in cuisines %}
-              <span>{{ cuisine }} </span>
+              {% if forloop.last %}
+                  <span>{{ cuisine }} </span>
+              {% else %}
+                   <span>{{ cuisine }}, </span>
+              {% endif %}
             {% endfor %}
           </p>
         </div>
@@ -107,7 +111,8 @@
             {% for ingredient in group.ingredient_set.all %}
               <label class="ingredien-element">
                   <input type="checkbox">
-                  <span>  {{ ingredient.name }}</span>
+                  <span> {{ ingredient.quantity }} {{ ingredient.measure }}
+                    {{ ingredient.name }}</span>
               </label>
             {% endfor %}
           </div>
@@ -123,8 +128,8 @@
       <div class="Recipe_steps_body">
         {% for step in steps %}
           <div class="recipe_setp_element" onclick="this.classList.toggle('text-crossed')">
-            <p>{{ step.number }}.</p>
-            <p>{{ step.description }}</p>
+            <p>{{ step.number }}. {{ step.description }}</p>
+
           </div>
         {% endfor %}
 
