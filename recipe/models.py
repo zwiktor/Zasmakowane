@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils import timezone
 
 from Blog.settings import MEDIA_URL
 
@@ -27,7 +28,8 @@ class Category(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=256, default='Przepis')
-    description = models.TextField(default='krotki opis')
+    short_description = models.TextField(default='krotki opis')
+    description = models.TextField(default='dlugi opis opis')
     prep_time = models.SmallIntegerField(null=True)
     cooking_time = models.SmallIntegerField(null=True)
     sum_time = models.SmallIntegerField(null=True)
@@ -43,7 +45,7 @@ class Recipe(models.Model):
     small_photo = models.ImageField()
     big_photo_1 = models.ImageField()
     big_photo_2 = models.ImageField(null=True)
-    create_date = models.DateTimeField(auto_now=True)
+    create_date = models.DateTimeField(editable=False)
     active = models.BooleanField(default=True)
     slug = models.SlugField(unique=True)
 
@@ -58,6 +60,9 @@ class Recipe(models.Model):
             s = self.title
         if not self.slug:
             self.slug = slugify(s)
+        if not self.id:
+            self.created = timezone.now()
+
         super(Recipe, self).save(*args, **kwargs)
 
 

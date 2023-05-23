@@ -39,11 +39,18 @@
 
     <div class="recipe-list-content">
       {% for new_recipe in recipe_filter.qs %}
-        <div class="recipe-card " onclick="window.location.href = '/przepisy/'
+        <div class="recipe-card" onclick="window.location.href = '/przepisy/'
               + '{{ new_recipe.slug }}';">
           <img src="{{ new_recipe.small_photo.url }}">
+          <div class="recipe-tags">
+            {% for tag in new_recipe.tags.all %}
+              <div class="tag_box" style="background-color: {{ tag.color }}">
+                <p title="{{ tag.name }}" class="tag_box_text">{{ tag.short_name }}</p>
+              </div>
+            {% endfor %}
+          </div>
           <h3 class="card-title">{{ new_recipe.title }}</h3>
-
+          <p class="recipe-category">Kategoria: {{ new_recipe.categories.first }}</p>
         </div>
 
       {% endfor %}
