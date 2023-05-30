@@ -45,7 +45,7 @@ class Recipe(models.Model):
     small_photo = models.ImageField()
     big_photo_1 = models.ImageField()
     big_photo_2 = models.ImageField(null=True)
-    create_date = models.DateTimeField(editable=False)
+    create_date = models.DateTimeField(null=True)
     active = models.BooleanField(default=True)
     slug = models.SlugField(unique=True)
 
@@ -61,7 +61,7 @@ class Recipe(models.Model):
         if not self.slug:
             self.slug = slugify(s)
         if not self.id:
-            self.created = timezone.now()
+            self.create_date = timezone.now()
 
         super(Recipe, self).save(*args, **kwargs)
 

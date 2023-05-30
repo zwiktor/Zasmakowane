@@ -6,7 +6,7 @@
 {% block content %}
   <div>
     <h1 class="recipe_title">{{ recipe.title }}</h1>
-    <p class="recipe-header-date">data dodania: {{ recipe.create_date }}</p>
+    <p class="recipe-header-date">Data dodania: {{ recipe.create_date }}</p>
     <div class="tag-container">
       <p class="tag-container-head">Tagi:</p>
       {% for tag in tags %}
@@ -48,7 +48,8 @@
           <p class="clocl-icon-text"><span class="clock-icon"></span>Czas gotowania: {{ recipe.cooking_time }}min</p>
         {% endif %}
         {% if recipe.sum_time  %}
-          <p class="clocl-icon-text"><span class="clock-icon"></span>Czas Lącznie: {{ recipe.sum_time  }}min</p>
+          <p class="clocl-icon-text"><span class="clock-icon"></span>Czas łącznie:
+            {{ recipe.sum_time  }}min</p>
         {% endif %}
         {% if recipe.calories  %}
             <p class="clocl-icon-text"><span class="food-icon"></span>Kalorie: {{ recipe.calories }}</p>
@@ -111,7 +112,13 @@
             {% for ingredient in group.ingredient_set.all %}
               <label class="ingredien-element">
                   <input type="checkbox">
-                  <span> {{ ingredient.quantity }} {{ ingredient.measure }}
+                  <span>
+                    {% if ingredient.quantity %}
+                      {{ ingredient.quantity }}
+                    {% endif %}
+                    {% if ingredient.measure %}
+                      {{ ingredient.measure }}
+                    {% endif %}
                     {{ ingredient.name }}</span>
               </label>
             {% endfor %}
