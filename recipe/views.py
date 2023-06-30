@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views import View
 
-from .models import Recipe, Comment, Ingredient, Step, Tag, Cuisine, Category, Ingedient_group
+from .models import Recipe, Comment, Ingredient, Step, Tag, Cuisine, Category, Ingedient_group, Post
 from .forms import CommentForm
 from .filters import RecipeFilter
 # Create your views here.
@@ -86,6 +86,27 @@ class RecipeDelete(View):
     def get(self, request, slug):
         context = {}
         return render(request, 'Recipe_delete.html', context)
+
+    def post(self, requeset):
+        pass
+
+
+class BlogView(View):
+    def get(self, request):
+        posts = Post.objects.all()
+        posts = posts.order_by('-create_date')
+        context = {'posts': posts}
+        return render(request, 'Blog.html', context)
+
+    def post(self, requeset):
+        pass
+
+
+class PostView(View):
+    def get(self, request, id):
+        post_obj = Post.objects.get(id=id)
+        context = {'post': post_obj}
+        return render(request, 'Post.html', context)
 
     def post(self, requeset):
         pass

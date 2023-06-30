@@ -1,0 +1,24 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block webtitle %}Blog{% endblock %}
+
+
+{% block content %}
+    <div class="post_list">
+         {% for post in posts %}
+         <div class="post_element">
+            <img src="{{ post.miniature.url }}" class="post_img">
+             <div class="post_text_area">
+                 <h2 class="post_title">{{ post.title }}</h2>
+                 <p class="post_date">{{ post.create_date }}</p>
+                 <p class="post_short_desc">{{ post.short_desc }}</p>
+                 <a class="post_read_more" type="button" href="{% url 'recipe_post' post.id %}">Czytaj więcej >>></a>
+             </div>
+
+
+
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

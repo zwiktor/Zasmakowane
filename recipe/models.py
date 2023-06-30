@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 from Blog.settings import MEDIA_URL
 
@@ -107,3 +109,12 @@ class Comment(models.Model):
     text = models.TextField()
     create_date = models.DateTimeField(auto_now=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    body = RichTextUploadingField(blank=True, null=True)
+    create_date = models.DateTimeField(null=True)
+    miniature = models.ImageField()
+    short_desc = models.CharField(max_length=400)
+
