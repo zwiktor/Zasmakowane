@@ -577,9 +577,9 @@ body {
   }
   .recipe-container form {
     background-color: white;
-    position: fixed;
-    left: 0;
-    top: 0;
+    padding: 20px 0;
+    border-radius: 10px;
+    margin: 10% 5%;
     z-index: 2;
   }
   .dropdown-content {
@@ -609,6 +609,15 @@ body {
   }
   .Toggle_button .dropbtn {
     padding:5px 85px;
+  }
+
+  .fieldWrapper {
+    font-size: 22px;
+    margin: 10px 0 ;
+  }
+
+  .fieldWrapper label input{
+
   }
 }
 
